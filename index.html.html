@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5E6DA;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #8B5E3C;
+            animation: fadeIn 2s;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 10px;
+        }
+        .yes {
+            background-color: #D4A59A;
+            color: white;
+        }
+        .no {
+            background-color: #8B5E3C;
+            color: white;
+        }
+        .yes:hover {
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes floatGift {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-10vh) rotate(360deg); }
+        }
+        .gift-card {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('gift.png');
+            background-size: cover;
+            animation: floatGift 5s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <video class="video-background" autoplay loop muted>
+        <source src="Valentine Gift.mp4" type="video/mp4">
+    </video>
+    <div class="container">
+        <h1>Be My Valentine In Every Universe.</h1>
+        <div class="buttons">
+            <button class="yes" id="yesBtn" onclick="nextPage('yes')">Yes</button>
+            <button class="no" id="noBtn" onclick="growYes()">No</button>
+        </div>
+        <div class="gift-card" style="top: 10%; left: 20%;"></div>
+        <div class="gift-card" style="top: 30%; left: 50%;"></div>
+        <div class="gift-card" style="top: 50%; left: 80%;"></div>
+        <div class="gift-card" style="top: 70%; left: 40%;"></div>
+    </div>
+    <script>
+        function nextPage(answer) {
+            if (answer === 'yes') {
+                window.location.href = 'thank_you.html';
+            }
+        }
+
+        function growYes() {
+            let yesBtn = document.getElementById('yesBtn');
+            let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+            yesBtn.style.fontSize = (currentSize + 5) + 'px';
+        }
+    </script>
+</body>
+</html>
